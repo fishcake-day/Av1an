@@ -86,12 +86,12 @@ checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
 name = "av-bitstream"
-version = "0.1.2"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2bd66eb513f71b16101d911bf64a1b6b1480e20e86d70613e679dd763a51e30f"
+checksum = "edfc0f4a8db21e5688fdbcbcddc4495bef847dcebc4c5dae7907fbd963d5996c"
 dependencies = [
- "err-derive",
  "num-traits",
+ "thiserror",
 ]
 
 [[package]]
@@ -103,7 +103,21 @@ dependencies = [
  "byte-slice-cast",
  "bytes",
  "num-derive",
- "num-rational",
+ "num-rational 0.3.2",
+ "num-traits",
+ "thiserror",
+]
+
+[[package]]
+name = "av-data"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ae0efe8b844ebd218ae548d0c12afedca2621fd41ccaa722128da928cd2af11b"
+dependencies = [
+ "byte-slice-cast",
+ "bytes",
+ "num-derive",
+ "num-rational 0.4.1",
  "num-traits",
  "thiserror",
 ]
@@ -114,20 +128,31 @@ version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "53b355bfc070e384ea796ad66b9f2aaf1bf3bd3307c1582bd244f2062d016676"
 dependencies = [
- "av-data",
+ "av-data 0.3.0",
+ "log",
+ "thiserror",
+]
+
+[[package]]
+name = "av-format"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3849494a36c059343063991bd56ba21ea6b6e144ec263e50fc0b3cf1c02dc3b7"
+dependencies = [
+ "av-data 0.4.1",
  "log",
  "thiserror",
 ]
 
 [[package]]
 name = "av-ivf"
-version = "0.2.3"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0e0bb740b62318f61c15051f5c5ddd0da193c907fcef803c833270d895e5e761"
+checksum = "f503297c9c08d8a0d2827c817b70644d28f2111ed25ba8a6029170ccb5f90fd6"
 dependencies = [
  "av-bitstream",
- "av-data",
- "av-format",
+ "av-data 0.4.1",
+ "av-format 0.7.0",
  "log",
  "nom",
 ]
@@ -193,7 +218,7 @@ dependencies = [
  "anyhow",
  "arrayvec",
  "atty",
- "av-format",
+ "av-format 0.3.1",
  "av-ivf",
  "av-scenechange",
  "av1-grain",
@@ -276,9 +301,9 @@ checksum = "87c5fdd0166095e1d463fc6cc01aa8ce547ad77a4e84d42eb6762b084e28067e"
 
 [[package]]
 name = "bytes"
-version = "1.1.0"
+version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c4872d67bab6358e59559027aa3b9157c53d9358c51423c17554809a8858e0f8"
+checksum = "ec8a7b6a70fde80372154c65702f00a0f56f3e1c36abbc6c440484be248856db"
 
 [[package]]
 name = "cc"
@@ -489,20 +514,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "err-derive"
-version = "0.2.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "22deed3a8124cff5fa835713fa105621e43bbdc46690c3a6b68328a012d350d4"
-dependencies = [
- "proc-macro-error",
- "proc-macro2",
- "quote",
- "rustversion",
- "syn",
- "synstructure",
 ]
 
 [[package]]
@@ -908,6 +919,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "num-bigint"
+version = "0.4.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f93ab6289c7b344a8a9f60f88d80aa20032336fe78da341afc91c8a2341fc75f"
+dependencies = [
+ "autocfg",
+ "num-integer",
+ "num-traits",
+]
+
+[[package]]
 name = "num-derive"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -935,7 +957,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "12ac428b1cb17fce6f731001d307d351ec70a6d202fc2e60f7d4c5e42d8f4f07"
 dependencies = [
  "autocfg",
- "num-bigint",
+ "num-bigint 0.3.3",
+ "num-integer",
+ "num-traits",
+]
+
+[[package]]
+name = "num-rational"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0638a1c9d0a3c0914158145bc76cff373a75a627e6ecbfb71cbe6f453a5a19b0"
+dependencies = [
+ "autocfg",
+ "num-bigint 0.4.3",
  "num-integer",
  "num-traits",
 ]
@@ -1479,18 +1513,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "synstructure"
-version = "0.12.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f36bdaa60a83aca3921b5259d5400cbf5e90fc51931376a9bd4a0eb79aa7210f"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
- "unicode-xid",
-]
-
-[[package]]
 name = "sysinfo"
 version = "0.26.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1684,12 +1706,6 @@ name = "unicode-width"
 version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3ed742d4ea2bd1176e236172c8429aaf54486e7ac098db29ffe6529e0ce50973"
-
-[[package]]
-name = "unicode-xid"
-version = "0.2.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "957e51f3646910546462e67d5f7599b9e4fb8acdd304b087a6494730f9eebf04"
 
 [[package]]
 name = "url"
