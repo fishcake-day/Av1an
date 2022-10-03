@@ -145,12 +145,13 @@ dependencies = [
 
 [[package]]
 name = "av1-grain"
-version = "0.1.4"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ac3ad7be4db4d3bbe49beee21e8170f4a4d6d1f1c8c4ce68c5ec0c77b89a5f9"
+checksum = "07ef20f1b831344469b9449640a43946d18676d393ba5ee28ee2aeba73d4e34a"
 dependencies = [
  "anyhow",
  "arrayvec",
+ "log",
 ]
 
 [[package]]
