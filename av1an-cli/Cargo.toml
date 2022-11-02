@@ -24,7 +24,7 @@ once_cell = "1.15.0"
 ansi_term = "0.12.1"
 
 [dependencies.flexi_logger]
-version = "0.23.3"
+version = "0.24.1"
 default-features = false
 features = ["colors", "use_chrono_for_offset"]
 
