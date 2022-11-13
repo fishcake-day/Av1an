@@ -122,13 +122,15 @@ pub(crate) fn printable_base10_digits(x: usize) -> u32 {
 pub fn read_in_dir(path: &Path) -> anyhow::Result<impl Iterator<Item = PathBuf>> {
   let dir = std::fs::read_dir(path)?;
   Ok(dir.into_iter().filter_map(Result::ok).filter_map(|d| {
-    d.file_type().map_or(None, |file_type| {
+    if let Ok(file_type) = d.file_type() {
       if file_type.is_file() {
         Some(d.path())
       } else {
         None
       }
-    })
+    } else {
+      None
+    }
   }))
 }
 
