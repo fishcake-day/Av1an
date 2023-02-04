@@ -56,12 +56,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "arrayref"
-version = "0.3.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a4c527152e37cf757a3f78aae5a06fbeefdb07ccc535c980a3208ee3060dd544"
-
-[[package]]
 name = "arrayvec"
 version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -135,9 +129,9 @@ dependencies = [
 [[package]]
 name = "av-scenechange"
 version = "0.7.2"
-source = "git+https://github.com/rust-av/av-scenechange?rev=4804462f2b6ae6209609cd95b5d9739264bf614f#4804462f2b6ae6209609cd95b5d9739264bf614f"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c5f1ee878fc434a52b8fc258418a9b1c08273c48599da652cdd79c43d6ad9f10"
 dependencies = [
- "anyhow",
  "rav1e",
  "rust_hawktracer",
  "y4m",
@@ -388,12 +382,6 @@ dependencies = [
  "unicode-width",
  "winapi",
 ]
-
-[[package]]
-name = "const_fn_assert"
-version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "27d614f23f34f7b5165a77dc1591f497e2518f9cec4b4f4b92bfc4dc6cf7a190"
 
 [[package]]
 name = "core-foundation-sys"
@@ -814,16 +802,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a3e378b66a060d48947b590737b30a1be76706c8dd7b8ba0f2fe3989c68a853f"
 
 [[package]]
-name = "maybe-rayon"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "57c0bd354d2614d2feeb08dd2afdb744a91ad3c886e2a04dac63e12fb32eb7f7"
-dependencies = [
- "cfg-if",
- "rayon",
-]
-
-[[package]]
 name = "memchr"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -864,12 +842,6 @@ checksum = "ce095842aee9aa3ecbda7a5d2a4df680375fd128a8596b6b56f8e497e231f483"
 dependencies = [
  "rayon",
 ]
-
-[[package]]
-name = "new_debug_unreachable"
-version = "1.0.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e4a24736216ec316047a1fc4252e27dabb04218aa4a3f37c6e7ddbf1f9782b54"
 
 [[package]]
 name = "nom"
@@ -1179,32 +1151,29 @@ dependencies = [
 
 [[package]]
 name = "rav1e"
-version = "0.5.0"
-source = "git+https://github.com/xiph/rav1e#b2db4a3cc6f9bcf5b07a6668d20d5d09f3afb063"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "56639427b5c9ad5734686eac009758593e2ba80eab08f6d083173c2e2b73cb00"
 dependencies = [
  "arbitrary",
  "arg_enum_proc_macro",
- "arrayref",
  "arrayvec",
  "bitstream-io",
  "cc",
  "cfg-if",
- "const_fn_assert",
  "interpolate_name",
  "itertools",
  "libc",
  "libfuzzer-sys",
  "log",
- "maybe-rayon",
  "nasm-rs",
- "new_debug_unreachable",
  "noop_proc_macro",
  "num-derive",
  "num-traits",
- "once_cell",
  "paste",
  "rand",
  "rand_chacha",
+ "rayon",
  "regex",
  "rust_hawktracer",
  "rustc_version",
@@ -1212,7 +1181,7 @@ dependencies = [
  "system-deps",
  "thiserror",
  "v_frame",
- "vergen 3.0.4",
+ "vergen 3.2.0",
 ]
 
 [[package]]
@@ -1635,16 +1604,15 @@ checksum = "cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c"
 
 [[package]]
 name = "tokio"
-version = "1.20.0"
+version = "1.20.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "57aec3cfa4c296db7255446efb4928a6be304b431a806216105542a67b6ca82e"
+checksum = "eb78f30e4b41e98ca4cce5acb51168a033839a7af9e42b380355808e14e98ee0"
 dependencies = [
  "autocfg",
  "bytes",
  "libc",
  "memchr",
  "mio",
- "once_cell",
  "pin-project-lite",
  "signal-hook-registry",
  "socket2",
@@ -1723,10 +1691,10 @@ dependencies = [
 [[package]]
 name = "v_frame"
 version = "0.2.5"
-source = "git+https://github.com/xiph/rav1e#b2db4a3cc6f9bcf5b07a6668d20d5d09f3afb063"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c70a928a3fbba9cbb0f86ffb4aabed536e7acf692a46b3bfb70c3d9c15b8c6ab"
 dependencies = [
  "cfg-if",
- "new_debug_unreachable",
  "noop_proc_macro",
  "num-derive",
  "num-traits",
@@ -1764,11 +1732,13 @@ checksum = "accd4ea62f7bb7a82fe23066fb0957d48ef677f6eeb8215f372f52e48bb32426"
 
 [[package]]
 name = "vergen"
-version = "3.0.4"
-source = "git+https://github.com/xiph/rav1e#b2db4a3cc6f9bcf5b07a6668d20d5d09f3afb063"
+version = "3.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e7141e445af09c8919f1d5f8a20dae0b20c3b57a45dee0d5823c6ed5d237f15a"
 dependencies = [
  "bitflags",
  "chrono",
+ "rustc_version",
 ]
 
 [[package]]
@@ -1966,3 +1936,8 @@ name = "y4m"
 version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a72a9921af8237fe25097a1ae31c92a05c1d39b2454653ad48f2f407cf7a0dae"
+
+[[patch.unused]]
+name = "av-scenechange"
+version = "0.8.0"
+source = "git+https://github.com/rust-av/av-scenechange?rev=2f91ec1b4224dccc7195bdabefdfa171e981ca60#2f91ec1b4224dccc7195bdabefdfa171e981ca60"
