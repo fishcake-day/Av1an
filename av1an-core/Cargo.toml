@@ -18,7 +18,7 @@ license = "GPL-3.0"
 log = "0.4.17"
 arrayvec = "0.7.2"
 atty = "0.2.14"
-av-format = "0.3.1"
+av-format = "0.7.0"
 av-ivf = "0.2.2"
 av1-grain = { version = "0.1.1", default-features = false, features = [
   "create",
